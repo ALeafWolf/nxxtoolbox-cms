@@ -1,0 +1,30 @@
+{
+  "name": "nxxtoolbox-cms",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-graphql": "^4.1.12",
+    "@strapi/plugin-i18n": "4.1.12",
+    "@strapi/plugin-users-permissions": "4.1.12",
+    "@strapi/strapi": "4.1.12",
+    "pg": "8.6.0"
+  },
+  "author": {
+    "name": "aleafwolf"
+  },
+  "strapi": {
+    "uuid": "19c6c96e-a327-465b-814c-607082b16a3f"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
