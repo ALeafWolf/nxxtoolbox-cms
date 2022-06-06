@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "characters",
+  "info": {
+    "singularName": "character",
+    "pluralName": "characters",
+    "displayName": "Character"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -55,6 +55,66 @@
       "relation": "manyToMany",
       "target": "api::card.card",
       "inversedBy": "skills"
+    },
+    "slot": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "min": 0,
+      "max": 2
+    },
+    "lv1": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "decimal"
+    },
+    "lv10": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "decimal"
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "GENERAL",
+        "LOGIC",
+        "EMPATHY",
+        "INTUITION"
+      ]
+    },
+    "character": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "GENERAL",
+        "LUKE",
+        "ARTEM",
+        "VYN",
+        "MARIUS"
+      ]
+    },
+    "rarity": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rarity.rarity"
     }
   }
 }

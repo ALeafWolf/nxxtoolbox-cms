@@ -67,6 +67,45 @@
       "relation": "manyToMany",
       "target": "api::skill.skill",
       "mappedBy": "relate_cards"
+    },
+    "ref": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "unique": false,
+      "required": false
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "LOGIC",
+        "EMPATHY",
+        "INTUITION"
+      ]
+    },
+    "acquisition": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "PERMENENT",
+        "ROTATION",
+        "EVENT",
+        "LIMITED-EVENT",
+        "FRAGMENT",
+        "ACCUMULATE-PURCHASE"
+      ]
     }
   }
 }
