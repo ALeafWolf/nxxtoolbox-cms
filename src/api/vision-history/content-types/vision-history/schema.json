@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vision_histories",
+  "info": {
+    "singularName": "vision-history",
+    "pluralName": "vision-histories",
+    "displayName": "Vision-History"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "ROTATION",
+        "EVENT",
+        "BIRTHDAY",
+        "LIMITED-EVENT",
+        "RERUN"
+      ]
+    },
+    "weibo": {
+      "type": "string"
+    },
+    "bilibili": {
+      "type": "string"
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "youtube": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card"
+    },
+    "server": {
+      "type": "enumeration",
+      "enum": [
+        "CN",
+        "GLOBAL"
+      ]
+    }
+  }
+}

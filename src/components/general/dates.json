@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_general_dates",
+  "info": {
+    "displayName": "String-Array",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}

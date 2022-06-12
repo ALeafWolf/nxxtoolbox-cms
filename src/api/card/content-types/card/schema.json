@@ -32,20 +32,6 @@
       },
       "type": "string"
     },
-    "rarity": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "R",
-        "MR",
-        "SR",
-        "SSR"
-      ]
-    },
     "influence": {
       "pluginOptions": {
         "i18n": {
@@ -68,7 +54,7 @@
       "target": "api::skill.skill",
       "mappedBy": "relate_cards"
     },
-    "ref": {
+    "img_ref": {
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -91,21 +77,17 @@
         "INTUITION"
       ]
     },
-    "acquisition": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "PERMENENT",
-        "ROTATION",
-        "EVENT",
-        "LIMITED-EVENT",
-        "FRAGMENT",
-        "ACCUMULATE-PURCHASE"
-      ]
+    "card_acquisitions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card-acquisition.card-acquisition",
+      "inversedBy": "cards"
+    },
+    "rarity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::rarity.rarity",
+      "inversedBy": "cards"
     }
   }
 }

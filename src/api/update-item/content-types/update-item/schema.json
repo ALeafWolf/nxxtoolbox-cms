@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "update_items",
+  "info": {
+    "singularName": "update-item",
+    "pluralName": "update-items",
+    "displayName": "Update-Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card"
+    },
+    "merches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch.merch"
+    }
+  }
+}

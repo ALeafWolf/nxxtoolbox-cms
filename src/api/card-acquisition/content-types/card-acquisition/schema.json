@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_acquisitions",
+  "info": {
+    "singularName": "card-acquisition",
+    "pluralName": "card-acquisitions",
+    "displayName": "Card-Acquisition"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card.card",
+      "mappedBy": "card_acquisitions"
+    }
+  }
+}

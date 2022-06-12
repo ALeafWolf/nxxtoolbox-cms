@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "merches",
+  "info": {
+    "singularName": "merch",
+    "pluralName": "merches",
+    "displayName": "Merch",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "series": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::merch-series.merch-series",
+      "inversedBy": "merches"
+    },
+    "material": {
+      "type": "string",
+      "default": "-"
+    },
+    "technology": {
+      "type": "string",
+      "default": "-"
+    },
+    "size": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.dates"
+    },
+    "packing": {
+      "type": "string",
+      "default": "-"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.dates"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.dates"
+    },
+    "weibo": {
+      "type": "string"
+    },
+    "tmall": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "selldate": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "merch_serieses",
+  "info": {
+    "singularName": "merch-series",
+    "pluralName": "merch-serieses",
+    "displayName": "Merch-Series",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "PERMANENT",
+        "LIMITED-TIME"
+      ]
+    },
+    "selltime": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.dates"
+    },
+    "merches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch.merch",
+      "mappedBy": "series"
+    }
+  }
+}

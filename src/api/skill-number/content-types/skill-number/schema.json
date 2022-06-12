@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skill_numbers",
+  "info": {
+    "singularName": "skill-number",
+    "pluralName": "skill-numbers",
+    "displayName": "Skill-Number"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "private": true
+    },
+    "lv1": {
+      "type": "decimal",
+      "min": 0
+    },
+    "lv10": {
+      "min": 0,
+      "type": "decimal"
+    }
+  }
+}
