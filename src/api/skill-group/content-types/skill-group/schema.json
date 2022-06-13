@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skill_groups",
+  "info": {
+    "singularName": "skill-group",
+    "pluralName": "skill-groups",
+    "displayName": "Skill-Group",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill.skill",
+      "mappedBy": "skill_group"
+    },
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
