@@ -32,6 +32,11 @@
       },
       "type": "string"
     },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character"
+    },
     "influence": {
       "pluginOptions": {
         "i18n": {

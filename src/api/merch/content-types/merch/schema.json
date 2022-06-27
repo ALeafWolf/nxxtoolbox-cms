@@ -29,24 +29,9 @@
       "type": "string",
       "default": "-"
     },
-    "size": {
-      "type": "component",
-      "repeatable": true,
-      "component": "general.dates"
-    },
     "packing": {
       "type": "string",
       "default": "-"
-    },
-    "description": {
-      "type": "component",
-      "repeatable": true,
-      "component": "general.dates"
-    },
-    "images": {
-      "type": "component",
-      "repeatable": true,
-      "component": "general.dates"
     },
     "weibo": {
       "type": "string"
@@ -59,6 +44,15 @@
     },
     "selldate": {
       "type": "integer"
+    },
+    "images": {
+      "type": "json"
+    },
+    "size": {
+      "type": "json"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

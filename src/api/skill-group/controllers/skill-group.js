@@ -9,9 +9,6 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController(
   "api::skill-group.skill-group",
   ({ strapi }) => ({
-    async fineOne(ctx){
-
-    },
     async findAll(ctx) {
       const query = {
         fields: ["name", "img_ref"],
