@@ -22,16 +22,14 @@
         "LIMITED-TIME"
       ]
     },
-    "selltime": {
-      "type": "component",
-      "repeatable": true,
-      "component": "general.dates"
-    },
     "merches": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::merch.merch",
       "mappedBy": "series"
+    },
+    "sell_times": {
+      "type": "json"
     }
   }
 }

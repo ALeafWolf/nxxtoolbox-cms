@@ -21,18 +21,6 @@
       "target": "api::merch-series.merch-series",
       "inversedBy": "merches"
     },
-    "material": {
-      "type": "string",
-      "default": "-"
-    },
-    "technology": {
-      "type": "string",
-      "default": "-"
-    },
-    "packing": {
-      "type": "string",
-      "default": "-"
-    },
     "weibo": {
       "type": "string"
     },
@@ -42,17 +30,26 @@
     "price": {
       "type": "string"
     },
-    "selldate": {
-      "type": "integer"
-    },
     "images": {
       "type": "json"
     },
-    "size": {
+    "sell_date_index": {
       "type": "json"
     },
+    "material": {
+      "type": "richtext"
+    },
+    "technology": {
+      "type": "richtext"
+    },
+    "packing": {
+      "type": "richtext"
+    },
     "description": {
-      "type": "text"
+      "type": "richtext"
+    },
+    "size": {
+      "type": "richtext"
     }
   }
 }

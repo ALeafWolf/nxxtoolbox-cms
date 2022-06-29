@@ -10,9 +10,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.2.0",
-    "@strapi/plugin-users-permissions": "4.2.0",
-    "@strapi/strapi": "4.2.0",
+    "@_sh/strapi-plugin-ckeditor": "^1.1.0",
+    "@strapi/plugin-i18n": "4.2.2",
+    "@strapi/plugin-users-permissions": "4.2.2",
+    "@strapi/strapi": "4.2.2",
     "pg": "8.6.0",
     "pg-connection-string": "^2.5.0"
   },

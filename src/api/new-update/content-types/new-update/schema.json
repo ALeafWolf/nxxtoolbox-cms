@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "new_updates",
+  "info": {
+    "singularName": "new-update",
+    "pluralName": "new-updates",
+    "displayName": "New Update"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card"
+    },
+    "merches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch.merch"
+    }
+  }
+}
