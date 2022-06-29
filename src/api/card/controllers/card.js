@@ -9,13 +9,26 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
     const query = {
-    //   fields: ["name", "img_ref", "slug", "influence", "defense"],
-      populate: "*",
-      sort: {
+      fields: ["name", "img_ref", "slug", "influence", "defense", "type"],
+      populate: {
         character: {
-          id: "asc",
+          fields: ["name"],
+        },
+        skills: {
+          fields: ["slug", "name", "img_ref"],
         },
         rarity: {
+          fields: ["value"],
+        },
+        card_acquisition: {
+          fields: ["value"],
+        },
+      },
+      sort: {
+        rarity: {
+          id: "desc",
+        },
+        character: {
           id: "asc",
         },
       },
@@ -29,4 +42,34 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
 
     return entries;
   },
+  async findCard(ctx){
+    const query = {
+      filters: {
+        slug: {
+          $eq: ctx.query.slug
+        }
+      },
+      fields: ["name", "type", "influence", "defense", "img_ref"],
+      populate: {
+        skills: {
+          fields: ["name", "slug", "img_ref", "description"],
+          populate: {
+            number: {
+              fields: ["lv1", "lv10"]
+            }
+          },
+          sort: {
+            slot: "asc"
+          }
+        }
+      },
+      ...ctx.query
+    };
+    const entries = await strapi.entityService.findMany(
+      "api::card.card",
+      query
+    );
+
+    return entries;
+  }
 }));

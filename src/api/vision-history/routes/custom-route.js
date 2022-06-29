@@ -2,8 +2,8 @@ module.exports = {
     routes: [
       {
         method: "GET",
-        path: "/skill/detail",
-        handler: "skill.findSkill",
+        path: "/version-histories",
+        handler: "vision-history.findHistories",
         config: {
           policies: [],
         },

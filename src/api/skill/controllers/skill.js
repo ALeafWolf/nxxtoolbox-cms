@@ -9,7 +9,12 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
   async findSkill(ctx) {
     const query = {
-      fields: ["name", "description"],
+      filters: {
+        slug: {
+          $eq: ctx.query.slug
+        }
+      },
+      fields: ["name", "description", "slug"],
       populate: {
         number: {
           fields: ["lv1", "lv10"],
@@ -26,9 +31,9 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
           populate: {
             skills: {
               fields: ["slug", "rank", "variant"],
+              sort: ["variant", "rank"],
             },
           },
-          sort: ["variant", "rank"],
         },
       },
       ...ctx.query,
