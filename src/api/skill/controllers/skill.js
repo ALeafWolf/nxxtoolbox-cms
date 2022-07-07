@@ -14,13 +14,14 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
           $eq: ctx.query.slug
         }
       },
-      fields: ["name", "description", "slug"],
+      fields: ["name", "description", "slug", "img_ref"],
       populate: {
         number: {
           fields: ["lv1", "lv10"],
         },
         relate_cards: {
           fields: ["slug", "img_ref"],
+          populate: ["character"],
           sort: {
             character: {
               id: "asc",

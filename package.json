@@ -13,6 +13,7 @@
     "@_sh/strapi-plugin-ckeditor": "^1.1.0",
     "@strapi/plugin-i18n": "4.2.2",
     "@strapi/plugin-users-permissions": "4.2.2",
+    "@strapi/provider-email-sendgrid": "^4.2.2",
     "@strapi/strapi": "4.2.2",
     "pg": "8.6.0",
     "pg-connection-string": "^2.5.0"
@@ -24,7 +25,7 @@
     "uuid": "19c6c96e-a327-465b-814c-607082b16a3f"
   },
   "engines": {
-    "node": ">=12.x.x <=14.x.x",
+    "node": ">=14.19.1 <=16.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

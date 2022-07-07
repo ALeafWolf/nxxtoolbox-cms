@@ -9,7 +9,7 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
     const query = {
-      fields: ["name", "img_ref", "slug", "influence", "defense", "type"],
+      fields: ["name", "img_ref", "slug", "influence", "defense", "attribute"],
       populate: {
         character: {
           fields: ["name"],
@@ -20,7 +20,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         rarity: {
           fields: ["value"],
         },
-        card_acquisition: {
+        card_acquisitions: {
           fields: ["value"],
         },
       },
@@ -56,6 +56,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           populate: {
             number: {
               fields: ["lv1", "lv10"]
+            },
+            card_acquisitions: {
+              fields: "*"
             }
           },
           sort: {

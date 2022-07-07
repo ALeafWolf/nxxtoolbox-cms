@@ -69,7 +69,7 @@
       "unique": false,
       "required": false
     },
-    "type": {
+    "attribute": {
       "pluginOptions": {
         "i18n": {
           "localized": false
