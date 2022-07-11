@@ -4,7 +4,8 @@
   "info": {
     "singularName": "vision-history",
     "pluralName": "vision-histories",
-    "displayName": "Vision-History"
+    "displayName": "Vision-History",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,19 +13,37 @@
   "pluginOptions": {},
   "attributes": {
     "start": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "end": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "type": {
       "type": "enumeration",
       "enum": [
-        "ROTATION",
+        "POOL",
         "EVENT",
-        "BIRTHDAY",
-        "LIMITED-EVENT",
-        "RERUN"
+        "MAIN-STORY"
+      ],
+      "required": true
+    },
+    "pool_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::card-acquisition.card-acquisition"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card"
+    },
+    "server": {
+      "type": "enumeration",
+      "enum": [
+        "CN",
+        "GLOBAL"
       ]
     },
     "weibo": {
@@ -38,18 +57,6 @@
     },
     "youtube": {
       "type": "string"
-    },
-    "cards": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::card.card"
-    },
-    "server": {
-      "type": "enumeration",
-      "enum": [
-        "CN",
-        "GLOBAL"
-      ]
     }
   }
 }

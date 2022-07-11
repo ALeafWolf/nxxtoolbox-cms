@@ -49,8 +49,14 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           $eq: ctx.query.slug
         }
       },
-      fields: ["name", "type", "influence", "defense", "img_ref"],
+      fields: ["name", "attribute", "influence", "defense", "img_ref"],
       populate: {
+        character: {
+          fields: ["name"],
+        },
+        rarity: {
+          fields: ["value"],
+        },
         skills: {
           fields: ["name", "slug", "img_ref", "description"],
           populate: {
@@ -72,7 +78,18 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       "api::card.card",
       query
     );
-
-    return entries;
+    const history = await strapi.entityService.findMany(
+      "api::vision-history.vision-history", {
+        filters: {
+          cards: {
+            slug: {
+              $eq: ctx.query.slug
+            }
+          }
+        }
+      }
+    );
+    entries[0].history = history;
+    return entries[0];
   }
 }));
