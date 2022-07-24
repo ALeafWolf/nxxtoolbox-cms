@@ -16,8 +16,7 @@ module.exports = {
     config: {
       provider: "sendgrid",
       providerOptions: {
-        // apiKey: env("SENDGRID_API_KEY"),
-        apiKey: "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",
+        apiKey: env("SENDGRID_API_KEY"),
       },
       settings: {
         defaultFrom: "nxxtoolbox@outlook.com",
