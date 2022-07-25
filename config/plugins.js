@@ -1,17 +1,4 @@
-module.exports = {
-  // graphql: {
-  //   config: {
-  //     endpoint: '/graphql',
-  //     shadowCRUD: true,
-  //     playgroundAlways: false,
-  //     depthLimit: 7,
-  //     amountLimit: 100,
-  //     apolloServer: {
-  //       tracing: false,
-  //     },
-  //   },
-  // },
-  ckeditor: true,
+module.exports = ({ env }) => ({
   email: {
     config: {
       provider: "sendgrid",
@@ -25,4 +12,5 @@ module.exports = {
       },
     },
   },
-};
+  ckeditor: true,
+});

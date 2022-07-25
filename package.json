@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^1.1.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.18.9",
     "@strapi/plugin-i18n": "4.2.3",
     "@strapi/plugin-users-permissions": "4.2.3",
     "@strapi/provider-email-sendgrid": "^4.2.3",
     "@strapi/strapi": "4.2.3",
+    "@strapi/utils": "^4.2.3",
     "pg": "8.6.0",
     "pg-connection-string": "^2.5.0"
   },
