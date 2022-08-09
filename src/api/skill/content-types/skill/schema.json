@@ -34,77 +34,10 @@
       },
       "type": "string"
     },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
-    "img_ref": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
-    },
-    "relate_cards": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::card.card",
-      "inversedBy": "skills"
-    },
-    "slot": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "integer",
-      "min": 1,
-      "max": 3
-    },
-    "type": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "GENERAL",
-        "LOGIC",
-        "EMPATHY",
-        "INTUITION"
-      ]
-    },
-    "character": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "GENERAL",
-        "LUKE",
-        "ARTEM",
-        "VYN",
-        "MARIUS"
-      ]
-    },
     "rarity": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::rarity.rarity"
-    },
-    "skill_group": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::skill-group.skill-group",
-      "inversedBy": "skills"
     },
     "rank": {
       "pluginOptions": {
@@ -126,6 +59,18 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::skill-number.skill-number",
+      "inversedBy": "skills"
+    },
+    "relate_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::card.card",
+      "inversedBy": "skills"
+    },
+    "skill_group": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::skill-group.skill-group",
       "inversedBy": "skills"
     }
   }

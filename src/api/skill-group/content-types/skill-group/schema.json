@@ -37,6 +37,36 @@
         }
       },
       "type": "string"
+    },
+    "slot": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "max": 3,
+      "min": 1
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character"
+    },
+    "attribute": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::attribute.attribute"
     }
   }
 }

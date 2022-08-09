@@ -11,10 +11,10 @@ module.exports = createCoreController(
   ({ strapi }) => ({
     async findAll(ctx) {
       const query = {
-        fields: ["name", "img_ref"],
+        fields: ["name", "img_ref", 'description', 'slot'],
         populate: {
             skills: {
-                fields: ['slug', 'name', 'description'],
+                fields: ['slug', 'name'],
                 populate: {
                     number: {
                         fields: ['lv1', 'lv10']
@@ -26,6 +26,7 @@ module.exports = createCoreController(
                 sort: ['variant', 'rank']
             }
         },
+        sort: ['slot'],
         ...ctx.query
       };
       // Calling the default core action

@@ -14,7 +14,7 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
           $eq: ctx.query.slug
         }
       },
-      fields: ["name", "description", "slug", "img_ref"],
+      fields: ["name", "slug"],
       populate: {
         number: {
           fields: ["lv1", "lv10"],
