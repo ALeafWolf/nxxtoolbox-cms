@@ -23,8 +23,7 @@
         }
       },
       "type": "string",
-      "unique": false,
-      "required": false
+      "required": true
     },
     "name": {
       "pluginOptions": {
@@ -32,7 +31,8 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "rarity": {
       "type": "relation",
@@ -45,7 +45,8 @@
           "localized": false
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "variant": {
       "pluginOptions": {
