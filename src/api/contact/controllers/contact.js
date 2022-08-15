@@ -15,7 +15,7 @@ module.exports = createCoreController("api::contact.contact", ({ strapi }) => ({
       subject: "New Contact Submission from NXXToolbox",
       text: `
         Name: ${entity.name}
-        Email: ${entity.name || "N/A"}
+        Email: ${entity.email || "N/A"}
         Comment: 
         ${entity.comment}
         `,
