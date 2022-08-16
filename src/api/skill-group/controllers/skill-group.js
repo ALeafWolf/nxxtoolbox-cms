@@ -28,10 +28,10 @@ module.exports = createCoreController(
         },
         sort: {
           slot: "asc",
-          character: {
+          attribute: {
             id: "asc",
           },
-          attribute: {
+          character: {
             id: "asc",
           },
         },
