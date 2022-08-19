@@ -15,7 +15,17 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           fields: ["name"],
         },
         skills: {
-          fields: ["slug", "name", "img_ref"],
+          fields: ["slug", "name"],
+          populate: {
+            skill_group: {
+              fields: ["img_ref"],
+            },
+          },
+          sort: {
+            skill_group: {
+              slot: "asc",
+            },
+          },
         },
         rarity: {
           fields: ["value"],
@@ -42,12 +52,12 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
 
     return entries;
   },
-  async findCard(ctx){
+  async findCard(ctx) {
     const query = {
       filters: {
         slug: {
-          $eq: ctx.query.slug
-        }
+          $eq: ctx.query.slug,
+        },
       },
       fields: ["name", "attribute", "influence", "defense", "img_ref"],
       populate: {
@@ -58,38 +68,44 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           fields: ["value"],
         },
         skills: {
-          fields: ["name", "slug", "img_ref", "description"],
+          fields: ["name", "slug", "description"],
           populate: {
             number: {
-              fields: ["lv1", "lv10"]
+              fields: ["lv1", "lv10"],
             },
             card_acquisitions: {
-              fields: "*"
-            }
+              fields: "*",
+            },
+            skill_group: {
+              fields: ["img_ref"],
+            },
           },
           sort: {
-            slot: "asc"
-          }
-        }
+            skill_group: {
+              slot: "asc",
+            },
+          },
+        },
       },
-      ...ctx.query
+      ...ctx.query,
     };
     const entries = await strapi.entityService.findMany(
       "api::card.card",
       query
     );
     const history = await strapi.entityService.findMany(
-      "api::vision-history.vision-history", {
+      "api::vision-history.vision-history",
+      {
         filters: {
           cards: {
             slug: {
-              $eq: ctx.query.slug
-            }
-          }
-        }
+              $eq: ctx.query.slug,
+            },
+          },
+        },
       }
     );
     entries[0].history = history;
     return entries[0];
-  }
+  },
 }));
