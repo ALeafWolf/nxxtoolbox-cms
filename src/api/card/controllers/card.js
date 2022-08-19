@@ -34,6 +34,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           fields: ["value"],
         },
       },
+      sort: {
+        id: 'desc'
+      },
       ...ctx.query,
     };
     // Calling the default core action
