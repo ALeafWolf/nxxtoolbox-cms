@@ -22,7 +22,8 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
       "pluginOptions": {
@@ -30,7 +31,8 @@
           "localized": false
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "character": {
       "type": "relation",
@@ -43,7 +45,8 @@
           "localized": false
         }
       },
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "defense": {
       "pluginOptions": {
@@ -51,7 +54,8 @@
           "localized": false
         }
       },
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "skills": {
       "type": "relation",
@@ -67,7 +71,7 @@
       },
       "type": "string",
       "unique": false,
-      "required": false
+      "required": true
     },
     "attribute": {
       "pluginOptions": {
@@ -80,7 +84,8 @@
         "LOGIC",
         "EMPATHY",
         "INTUITION"
-      ]
+      ],
+      "required": true
     },
     "card_acquisitions": {
       "type": "relation",
