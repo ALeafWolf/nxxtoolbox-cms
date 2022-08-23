@@ -84,11 +84,6 @@ module.exports = createCoreController(
           id: "asc",
         },
         ...ctx.query,
-        filters: {
-          publishedAt: {
-            $ne: null,
-          },
-        },
       };
       // Calling the default core action
       const entries = await strapi.entityService.findMany(
