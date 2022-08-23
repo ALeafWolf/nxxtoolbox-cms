@@ -38,7 +38,9 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
         },
       },
       ...ctx.query,
-      status: 'published',
+      publishedAt: {
+        $ne: null
+      }
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(

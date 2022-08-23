@@ -9,7 +9,15 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
     const query = {
-      fields: ["name", "img_ref", "slug", "influence", "defense", "attribute"],
+      fields: [
+        "name",
+        "img_ref",
+        "slug",
+        "influence",
+        "defense",
+        "attribute",
+        "publishedAt",
+      ],
       populate: {
         character: {
           fields: ["name"],
@@ -35,17 +43,21 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         },
       },
       sort: {
-        id: 'desc'
+        id: "desc",
       },
       ...ctx.query,
-      status: 'published',
+      filters: {
+        publishedAt: {
+          $ne: null,
+        },
+      },
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
       "api::card.card",
       query
     );
-
+    // const entries = await strapi.service.card.find(query);
     return entries;
   },
   async findCard(ctx) {
@@ -84,6 +96,11 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         },
       },
       ...ctx.query,
+      filters: {
+        publishedAt: {
+          $ne: null,
+        },
+      },
     };
     const entries = await strapi.entityService.findMany(
       "api::card.card",
@@ -97,6 +114,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
             slug: {
               $eq: ctx.query.slug,
             },
+          },
+          publishedAt: {
+            $ne: null,
           },
         },
       }
