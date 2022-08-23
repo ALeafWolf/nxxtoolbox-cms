@@ -84,6 +84,7 @@ module.exports = createCoreController(
           id: "asc",
         },
         ...ctx.query,
+        status: 'published',
       };
       // Calling the default core action
       const entries = await strapi.entityService.findMany(

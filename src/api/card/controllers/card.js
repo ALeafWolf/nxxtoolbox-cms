@@ -38,6 +38,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         id: 'desc'
       },
       ...ctx.query,
+      status: 'published',
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
