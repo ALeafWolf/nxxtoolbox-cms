@@ -16,7 +16,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "influence",
         "defense",
         "attribute",
-        "publishedAt",
+        "thumbnail",
       ],
       populate: {
         character: {

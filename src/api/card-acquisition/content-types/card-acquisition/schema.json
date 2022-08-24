@@ -4,7 +4,8 @@
   "info": {
     "singularName": "card-acquisition",
     "pluralName": "card-acquisitions",
-    "displayName": "Card-Acquisition"
+    "displayName": "Card-Acquisition",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -19,6 +20,14 @@
       "relation": "manyToMany",
       "target": "api::card.card",
       "mappedBy": "card_acquisitions"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "POOL",
+        "EVENT"
+      ],
+      "required": true
     }
   }
 }

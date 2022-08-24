@@ -32,7 +32,7 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
           populate: {
             skills: {
               fields: ["slug", "rank", "variant"],
-              sort: ["variant", "rank"],
+              sort: ["rank", "variant"],
             },
           },
         },
