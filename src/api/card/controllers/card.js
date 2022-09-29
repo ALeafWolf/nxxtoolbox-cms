@@ -16,12 +16,12 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "influence",
         "defense",
         "attribute",
-        "thumbnail",
       ],
       populate: {
         character: {
           fields: ["name"],
         },
+        thumbnail: true,
         skills: {
           fields: ["slug", "name"],
           populate: {
@@ -38,9 +38,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         rarity: {
           fields: ["value"],
         },
-        card_acquisitions: {
-          fields: ["value"],
-        },
+        card_acquisitions: true,
       },
       sort: {
         id: "desc",
@@ -51,6 +49,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           $ne: null,
         },
       },
+      
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
@@ -62,12 +61,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   },
   async findCard(ctx) {
     const query = {
-      filters: {
-        slug: {
-          $eq: ctx.query.slug,
-        },
-      },
-      fields: ["name", "attribute", "influence", "defense", "img_ref"],
+      fields: ["name", "attribute", "influence", "defense", "img_ref", "slug"],
       populate: {
         character: {
           fields: ["name"],
@@ -75,17 +69,15 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         rarity: {
           fields: ["value"],
         },
+        card_acquisitions: true,
         skills: {
-          fields: ["name", "slug", "description"],
+          fields: ["name", "slug", "variant"],
           populate: {
             number: {
               fields: ["lv1", "lv10"],
             },
-            card_acquisitions: {
-              fields: "*",
-            },
             skill_group: {
-              fields: ["img_ref"],
+              fields: ["img_ref", "description"],
             },
           },
           sort: {
@@ -97,6 +89,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       },
       ...ctx.query,
       filters: {
+        slug: {
+          $eq: ctx.query.slug,
+        },
         publishedAt: {
           $ne: null,
         },
