@@ -38,7 +38,7 @@
       "type": "enumeration",
       "enum": [
         "POOL",
-        "EVENT"
+        "OTHER"
       ],
       "required": true,
       "pluginOptions": {
@@ -47,7 +47,26 @@
         }
       }
     },
-    "descriptionn": {
+    "subtype": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "PERMANENT-POOL",
+        "ROTATION-POOL",
+        "EVENT-POOL",
+        "EVENT-LIMITED-POOL",
+        "RERUN-POOL",
+        "ANOMALY-LEVEL",
+        "EVENT-REWARD",
+        "OTHER"
+      ],
+      "required": true
+    },
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -71,7 +90,8 @@
       "enum": [
         "CN",
         "GLOBAL"
-      ]
+      ],
+      "required": true
     },
     "social_media_url": {
       "pluginOptions": {

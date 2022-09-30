@@ -101,22 +101,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       "api::card.card",
       query
     );
-    const history = await strapi.entityService.findMany(
-      "api::vision-history.vision-history",
-      {
-        filters: {
-          cards: {
-            slug: {
-              $eq: ctx.query.slug,
-            },
-          },
-          publishedAt: {
-            $ne: null,
-          },
-        },
-      }
-    );
-    entries[0].history = history;
     return entries[0];
   },
 }));
