@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "merch_materials",
+  "collectionName": "merch_technologies",
   "info": {
-    "singularName": "merch-material",
-    "pluralName": "merch-materials",
-    "displayName": "Merch-Material",
-    "description": ""
+    "singularName": "merch-technology",
+    "pluralName": "merch-technologies",
+    "displayName": "Merch-Technology"
   },
   "options": {
     "draftAndPublish": false

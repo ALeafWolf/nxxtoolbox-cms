@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "merch_materials",
+  "collectionName": "merch_sizes",
   "info": {
-    "singularName": "merch-material",
-    "pluralName": "merch-materials",
-    "displayName": "Merch-Material",
-    "description": ""
+    "singularName": "merch-size",
+    "pluralName": "merch-sizes",
+    "displayName": "Merch-Size"
   },
   "options": {
     "draftAndPublish": false

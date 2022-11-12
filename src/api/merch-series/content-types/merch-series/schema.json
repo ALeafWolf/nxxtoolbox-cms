@@ -8,19 +8,22 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "type": {
       "type": "enumeration",
       "enum": [
         "PERMANENT",
-        "LIMITED-TIME"
-      ]
+        "LIMITED-TIME",
+        "MIXED"
+      ],
+      "required": true
     },
     "merches": {
       "type": "relation",
@@ -29,7 +32,8 @@
       "mappedBy": "series"
     },
     "sell_times": {
-      "type": "json"
+      "type": "json",
+      "required": true
     }
   }
 }

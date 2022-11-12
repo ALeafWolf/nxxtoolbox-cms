@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "series": {
       "type": "relation",
@@ -22,34 +24,64 @@
       "inversedBy": "merches"
     },
     "weibo": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "tmall": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "price": {
-      "type": "string"
-    },
-    "images": {
-      "type": "json"
+      "type": "string",
+      "required": true
     },
     "sell_date_index": {
-      "type": "json"
+      "type": "json",
+      "required": true
     },
-    "material": {
-      "type": "richtext"
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch-material.merch-material"
     },
-    "technology": {
-      "type": "richtext"
+    "packagings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch-packaging.merch-packaging"
     },
-    "packing": {
-      "type": "richtext"
+    "technologies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch-technology.merch-technology"
+    },
+    "size": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::merch-size.merch-size"
     },
     "description": {
       "type": "richtext"
     },
-    "size": {
-      "type": "richtext"
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character"
     }
   }
 }
