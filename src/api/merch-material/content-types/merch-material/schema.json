@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "merch_materials",
+  "info": {
+    "singularName": "merch-material",
+    "pluralName": "merch-materials",
+    "displayName": "Merch-Material"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}

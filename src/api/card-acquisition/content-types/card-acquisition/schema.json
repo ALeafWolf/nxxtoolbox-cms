@@ -59,9 +59,10 @@
         "ROTATION-POOL",
         "EVENT-POOL",
         "EVENT-LIMITED-POOL",
+        "EVENT-REWARD",
         "RERUN-POOL",
         "ANOMALY-LEVEL",
-        "EVENT-REWARD",
+        "TOP-UP-REWARD",
         "OTHER"
       ],
       "required": true
