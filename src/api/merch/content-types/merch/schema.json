@@ -23,6 +23,11 @@
       "target": "api::merch-series.merch-series",
       "inversedBy": "merches"
     },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character"
+    },
     "weibo": {
       "type": "string",
       "required": false
@@ -62,14 +67,6 @@
     "description": {
       "type": "richtext"
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "avatar": {
       "type": "media",
       "multiple": false,
@@ -78,10 +75,18 @@
         "images"
       ]
     },
-    "character": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "type": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::character.character"
+      "target": "api::merch-type.merch-type"
     }
   }
 }

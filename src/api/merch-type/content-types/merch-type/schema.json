@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "merch_packagings",
+  "collectionName": "merch_types",
   "info": {
-    "singularName": "merch-packaging",
-    "pluralName": "merch-packagings",
-    "displayName": "Merch-Packaging",
-    "description": ""
+    "singularName": "merch-type",
+    "pluralName": "merch-types",
+    "displayName": "Merch-Type"
   },
   "options": {
     "draftAndPublish": false

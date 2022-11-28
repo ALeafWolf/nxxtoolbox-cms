@@ -4,7 +4,8 @@
   "info": {
     "singularName": "merch-size",
     "pluralName": "merch-sizes",
-    "displayName": "Merch-Size"
+    "displayName": "Merch-Size",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,7 +14,8 @@
   "attributes": {
     "value": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     }
   }
 }
