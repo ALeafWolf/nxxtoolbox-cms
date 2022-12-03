@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       method: "GET",
-      path: "/card/detail",
+      path: "/card/detail/:name",
       handler: "card.findCard",
       config: {
         policies: [],

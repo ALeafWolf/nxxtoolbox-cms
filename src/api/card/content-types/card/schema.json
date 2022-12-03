@@ -10,28 +10,27 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "name": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name_en": {
+      "type": "string",
+      "unique": true,
       "required": true
     },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+    "name_ko": {
       "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "is_permanent": {
+      "type": "boolean",
+      "default": false,
       "required": true
     },
     "character": {
@@ -40,20 +39,12 @@
       "target": "api::character.character"
     },
     "influence": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "integer",
       "required": true
     },
     "defense": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "integer",
       "required": true
     },
@@ -64,21 +55,13 @@
       "mappedBy": "relate_cards"
     },
     "img_ref": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "string",
       "unique": false,
       "required": true
     },
     "attribute": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "enumeration",
       "enum": [
         "LOGIC",
@@ -100,31 +83,25 @@
       "inversedBy": "cards"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     }
   }
 }

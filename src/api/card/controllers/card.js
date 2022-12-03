@@ -8,10 +8,14 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
+    const { locale } = ctx.query;
+    console.log(locale);
     const query = {
       fields: [
         "name",
         "img_ref",
+        "name_en",
+        "name_ko",
         "slug",
         "influence",
         "defense",
@@ -49,7 +53,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           $ne: null,
         },
       },
-      
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
@@ -57,11 +60,31 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       query
     );
     // const entries = await strapi.service.card.find(query);
+    if (locale === "en") {
+      for (let i = 0; i < entries.length; i++) {
+        entries[i].name = entries[i].name_en;
+      }
+    } else if (locale === "ko") {
+      for (let i = 0; i < entries.length; i++) {
+        entries[i].name = entries[i].name_ko;
+      }
+    }
     return entries;
   },
   async findCard(ctx) {
+    const { name } = ctx.params;
+    const { locale } = ctx.query;
     const query = {
-      fields: ["name", "attribute", "influence", "defense", "img_ref", "slug"],
+      fields: [
+        "name",
+        "name_en",
+        "name_ko",
+        "attribute",
+        "influence",
+        "defense",
+        "img_ref",
+        "slug",
+      ],
       populate: {
         character: {
           fields: ["name"],
@@ -89,9 +112,17 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       },
       ...ctx.query,
       filters: {
-        slug: {
-          $eq: ctx.query.slug,
-        },
+        $or: [
+          {
+            name: name,
+          },
+          {
+            name_en: name,
+          },
+          {
+            name_ko: name,
+          },
+        ],
         publishedAt: {
           $ne: null,
         },
@@ -101,6 +132,14 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       "api::card.card",
       query
     );
-    return entries[0];
+    const card = entries[0];
+    if (card) {
+      if (locale === "en") {
+        card.name = card.name_en;
+      } else if (locale === "ko") {
+        card.name = card.name_ko;
+      }
+    }
+    return card;
   },
 }));
