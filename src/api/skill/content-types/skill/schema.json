@@ -53,6 +53,12 @@
       "relation": "manyToOne",
       "target": "api::skill-group.skill-group",
       "inversedBy": "skills"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ko": {
+      "type": "string"
     }
   }
 }

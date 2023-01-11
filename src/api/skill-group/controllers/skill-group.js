@@ -59,7 +59,7 @@ module.exports = createCoreController(
   ({ strapi }) => ({
     async findAll(ctx) {
       const query = {
-        fields: ["name", "img_ref", "description", "slot"],
+        fields: ["name", "name_en", "name_ko", "img_ref", "description", "description_en", "description_ko", "slot"],
         populate: {
           attribute: {
             fields: ["id"],
@@ -68,7 +68,7 @@ module.exports = createCoreController(
             fields: ["id"],
           },
           skills: {
-            fields: ["slug", "name"],
+            fields: ["slug", "name", "name_en", "name_ko"],
             populate: {
               number: {
                 fields: ["lv1", "lv10"],

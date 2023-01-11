@@ -8,40 +8,25 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
   async findAll(ctx) {
+    const filter = {
+      publishedAt: {
+        $ne: null,
+      },
+      ...ctx.query.filters,
+    };
+
     const query = {
       fields: ["name", "price", "sell_date_index"],
       populate: {
         series: {
           fields: ["name", "type"],
         },
-        character: {
-          fields: ["name"],
-        },
         avatar: {
           fields: ["url"],
         },
-        materials: {
-          fields: ["value"],
-        },
-        packagings: {
-          fields: ["value"],
-        },
-        technologies: {
-          fields: ["value"],
-        },
-        size: {
-          fields: ["value"],
-        },
       },
-      sort: {
-        id: "desc",
-      },
-      ...ctx.query,
-      filters: {
-        publishedAt: {
-          $ne: null,
-        },
-      },
+      filters: filter,
+      sort: ctx.query.sort
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
@@ -74,6 +59,9 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
         images: {
           fields: ["url"],
         },
+        type: {
+          fields: ["value"],
+        },
         materials: {
           fields: ["value"],
         },
@@ -101,22 +89,22 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
     );
     return entry;
   },
-  // async getPriceRange(ctx) {
-  //   const query = {
-  //     fields: ["price"],
-  //     sort: ["price"],
-  //     filters: {
-  //       publishedAt: {
-  //         $ne: null,
-  //       },
-  //     },
-  //   };
-  //   const entry = await strapi.entityService.findMany(
-  //     "api::merch.merch",
-  //     query
-  //   );
-  //   const length = entry.length();
-  //   const range = [entry[0].price, entry[length - 1].price];
-  //   return range;
-  // },
+  async getPriceRange(ctx) {
+    const query = {
+      fields: ["price"],
+      sort: ["price"],
+      filters: {
+        publishedAt: {
+          $ne: null,
+        },
+      },
+    };
+    const entry = await strapi.entityService.findMany(
+      "api::merch.merch",
+      query
+    );
+    const length = entry.length;
+    const range = [entry[0].price, entry[length - 1].price];
+    return range;
+  },
 }));

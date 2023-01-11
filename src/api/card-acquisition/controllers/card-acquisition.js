@@ -22,7 +22,7 @@ module.exports = createCoreController(
         ],
         populate: {
           cards: {
-            fields: ["name"],
+            fields: [`name`, 'name_en', 'name_ko'],
             populate: ["thumbnail"],
             sort: {
               character: {
@@ -32,7 +32,9 @@ module.exports = createCoreController(
           },
         },
         sort: ["start", "id"],
+        ...ctx.query
       };
+      console.log(query)
       const entries = await strapi.entityService.findMany(
         "api::card-acquisition.card-acquisition",
         query

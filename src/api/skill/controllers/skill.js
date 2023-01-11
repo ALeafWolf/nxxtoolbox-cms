@@ -8,20 +8,16 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
   async findSkill(ctx) {
+    const { name } = ctx.query;
     const query = {
-      filters: {
-        slug: {
-          $eq: ctx.query.slug
-        }
-      },
-      fields: ["name", "slug", "variant"],
+      fields: ["name", "name_en", "name_ko", "variant"],
       populate: {
         number: {
           fields: ["lv1", "lv10"],
         },
         relate_cards: {
-          fields: ["slug", "img_ref"],
-          populate: ["character"],
+          fields: ["name", "name_en", "name_ko"],
+          populate: ["character", "thumbnail"],
           sort: {
             character: {
               id: "asc",
@@ -29,18 +25,35 @@ module.exports = createCoreController("api::skill.skill", ({ strapi }) => ({
           },
         },
         skill_group: {
+          fields: ["description", "description_en", "description_ko"],
           populate: {
+            icon: {
+              fields: ['url']
+            },
             skills: {
-              fields: ["slug", "rank", "variant"],
+              fields: ["rank", "variant", "name", "name_en", "name_ko"],
               sort: ["rank", "variant"],
             },
           },
         },
       },
       ...ctx.query,
-      publishedAt: {
-        $ne: null
-      }
+      filters: {
+        $or: [
+          {
+            name: name,
+          },
+          {
+            name_en: name,
+          },
+          {
+            name_ko: name,
+          },
+        ],
+        publishedAt: {
+          $ne: null,
+        },
+      },
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(

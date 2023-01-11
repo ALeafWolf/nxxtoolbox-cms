@@ -8,15 +8,12 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
-    const { locale } = ctx.query;
-    console.log(locale);
     const query = {
       fields: [
         "name",
         "img_ref",
         "name_en",
         "name_ko",
-        "slug",
         "influence",
         "defense",
         "attribute",
@@ -27,10 +24,11 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         },
         thumbnail: true,
         skills: {
-          fields: ["slug", "name"],
+          fields: ["slug", "name", "name_en", "name_ko"],
           populate: {
             skill_group: {
               fields: ["img_ref"],
+              populate: ["icon"],
             },
           },
           sort: {
@@ -59,16 +57,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       "api::card.card",
       query
     );
-    // const entries = await strapi.service.card.find(query);
-    if (locale === "en") {
-      for (let i = 0; i < entries.length; i++) {
-        entries[i].name = entries[i].name_en;
-      }
-    } else if (locale === "ko") {
-      for (let i = 0; i < entries.length; i++) {
-        entries[i].name = entries[i].name_ko;
-      }
-    }
     return entries;
   },
   async findCard(ctx) {
@@ -83,7 +71,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "influence",
         "defense",
         "img_ref",
-        "slug",
       ],
       populate: {
         character: {
@@ -94,13 +81,14 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         },
         card_acquisitions: true,
         skills: {
-          fields: ["name", "slug", "variant"],
+          fields: ["name", "name_en", "name_ko", "slug", "variant"],
           populate: {
             number: {
               fields: ["lv1", "lv10"],
             },
             skill_group: {
-              fields: ["img_ref", "description"],
+              fields: ["description", "description_en", "description_ko"],
+              populate: ["icon"],
             },
           },
           sort: {
