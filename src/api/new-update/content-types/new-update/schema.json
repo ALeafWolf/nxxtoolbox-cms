@@ -4,7 +4,8 @@
   "info": {
     "singularName": "new-update",
     "pluralName": "new-updates",
-    "displayName": "New Update"
+    "displayName": "New Update",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -12,14 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "cards": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::card.card"
+      "type": "component",
+      "repeatable": true,
+      "component": "general.new-cards-with-date"
     },
     "merches": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::merch.merch"
+      "type": "component",
+      "repeatable": true,
+      "component": "general.new-merches-with-date"
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_general_new_merches_with_dates",
+  "info": {
+    "displayName": "New Merches with Date",
+    "icon": "newspaper"
+  },
+  "options": {},
+  "attributes": {
+    "merches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::merch.merch"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

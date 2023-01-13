@@ -54,12 +54,6 @@
       "target": "api::skill.skill",
       "mappedBy": "relate_cards"
     },
-    "img_ref": {
-      "pluginOptions": {},
-      "type": "string",
-      "unique": false,
-      "required": true
-    },
     "attribute": {
       "pluginOptions": {},
       "type": "enumeration",
