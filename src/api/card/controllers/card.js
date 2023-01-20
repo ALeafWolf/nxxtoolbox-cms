@@ -8,15 +8,19 @@ const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   async findAll(ctx) {
+    const filters = ctx.query.filters ? ctx.query.filters : {};
+    filters.publishedAt = {
+      $ne: null,
+    };
     const query = {
       fields: [
         "name",
-        "img_ref",
         "name_en",
         "name_ko",
         "influence",
         "defense",
         "attribute",
+        "is_permanent",
       ],
       populate: {
         character: {
@@ -27,7 +31,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           fields: ["slug", "name", "name_en", "name_ko"],
           populate: {
             skill_group: {
-              fields: ["img_ref"],
               populate: ["icon"],
             },
           },
@@ -45,12 +48,7 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       sort: {
         id: "desc",
       },
-      ...ctx.query,
-      filters: {
-        publishedAt: {
-          $ne: null,
-        },
-      },
+      filters: filters,
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
@@ -70,7 +68,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "attribute",
         "influence",
         "defense",
-        "img_ref",
       ],
       populate: {
         character: {

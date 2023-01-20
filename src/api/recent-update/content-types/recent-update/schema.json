@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "new_updates",
+  "collectionName": "recent_updates",
   "info": {
-    "singularName": "new-update",
-    "pluralName": "new-updates",
-    "displayName": "New Update",
+    "singularName": "recent-update",
+    "pluralName": "recent-updates",
+    "displayName": "Recent Update",
     "description": ""
   },
   "options": {
@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "cards": {
+    "card_list": {
       "type": "component",
       "repeatable": true,
       "component": "general.new-cards-with-date"
     },
-    "merches": {
+    "merch_list": {
       "type": "component",
       "repeatable": true,
       "component": "general.new-merches-with-date"

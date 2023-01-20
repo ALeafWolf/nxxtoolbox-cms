@@ -2,7 +2,8 @@
   "collectionName": "components_general_new_cards_with_dates",
   "info": {
     "displayName": "New Cards with Date",
-    "icon": "newspaper"
+    "icon": "newspaper",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,7 +13,8 @@
       "target": "api::card.card"
     },
     "date": {
-      "type": "date"
+      "type": "date",
+      "required": true
     }
   }
 }
