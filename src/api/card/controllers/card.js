@@ -59,7 +59,6 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
   },
   async findCard(ctx) {
     const { name } = ctx.params;
-    const { locale } = ctx.query;
     const query = {
       fields: [
         "name",
@@ -70,13 +69,33 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "defense",
       ],
       populate: {
+        thumbnail: {
+          fields: ["url"],
+        },
+        images: {
+          fields: ["url"],
+        },
         character: {
           fields: ["name"],
         },
         rarity: {
           fields: ["value"],
         },
-        card_acquisitions: true,
+        card_acquisitions: {
+          fields: "*",
+          populate: {
+            cards: {
+              fields: [`name`, "name_en", "name_ko"],
+              populate: ["thumbnail"],
+              sort: {
+                character: {
+                  id: "asc",
+                },
+              },
+            },
+          },
+          sort: ["start:desc", "end:desc"],
+        },
         skills: {
           fields: ["name", "name_en", "name_ko", "slug", "variant"],
           populate: {
@@ -118,13 +137,52 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
       query
     );
     const card = entries[0];
-    if (card) {
-      if (locale === "en") {
-        card.name = card.name_en;
-      } else if (locale === "ko") {
-        card.name = card.name_ko;
-      }
-    }
     return card;
+  },
+  async findCardForPowerCalculator(ctx) {
+    const query = {
+      fields: [
+        "name",
+        "name_en",
+        "name_ko",
+        "attribute",
+        "influence",
+        "defense",
+      ],
+      populate: {
+        thumbnail: {
+          fields: ["url"],
+        },
+        character: {
+          fields: ["name"],
+        },
+        rarity: {
+          fields: ["value"],
+        },
+        skills: {
+          fields: ["name", "name_en", "name_ko", "slug", "rank", "variant"],
+          populate: {
+            number: {
+              fields: ["lv1", "lv10"],
+            },
+            skill_group: {
+              fields: ["description", "description_en", "description_ko"],
+              populate: ["icon"],
+            },
+          },
+          sort: {
+            skill_group: {
+              slot: "asc",
+            },
+          },
+        },
+      },
+      ...ctx.query,
+    };
+    const entries = await strapi.entityService.findMany(
+      "api::card.card",
+      query
+    );
+    return entries;
   },
 }));

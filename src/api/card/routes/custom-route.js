@@ -10,6 +10,14 @@ module.exports = {
     },
     {
       method: "GET",
+      path: "/card/power",
+      handler: "card.findCardForPowerCalculator",
+      config: {
+        policies: [],
+      },
+    },
+    {
+      method: "GET",
       path: "/card/detail/:name",
       handler: "card.findCard",
       config: {
