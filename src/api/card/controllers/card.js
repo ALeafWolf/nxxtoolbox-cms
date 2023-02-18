@@ -167,7 +167,17 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
             },
             skill_group: {
               fields: ["description", "description_en", "description_ko"],
-              populate: ["icon"],
+              populate: {
+                icon: {
+                  fields: ["url"],
+                },
+                character: {
+                  fields: ["name"],
+                },
+                attribute: {
+                  fields: ["name"],
+                },
+              },
             },
           },
           sort: {
