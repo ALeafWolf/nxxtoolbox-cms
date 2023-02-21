@@ -96,6 +96,16 @@
         "audios"
       ],
       "pluginOptions": {}
+    },
+    "is_horizontal_img": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "is_release_in_global": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

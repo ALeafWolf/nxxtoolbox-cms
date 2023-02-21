@@ -63,14 +63,23 @@
       "type": "string"
     },
     "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "related_statistic": {
+      "type": "enumeration",
+      "enum": [
+        "INFLUENCE",
+        "DEFENSE",
+        "OTHER"
+      ]
     }
   }
 }

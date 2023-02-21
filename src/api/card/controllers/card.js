@@ -67,6 +67,8 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
         "attribute",
         "influence",
         "defense",
+        "is_horizontal_img",
+        "is_release_in_global",
       ],
       populate: {
         thumbnail: {

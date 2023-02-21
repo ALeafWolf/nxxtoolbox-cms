@@ -43,6 +43,7 @@
         "RERUN-POOL",
         "ANOMALY-LEVEL",
         "TOP-UP-REWARD",
+        "EXCHANGE",
         "OTHER"
       ],
       "required": true

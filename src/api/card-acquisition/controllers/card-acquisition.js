@@ -10,6 +10,24 @@ module.exports = createCoreController(
   "api::card-acquisition.card-acquisition",
   ({ strapi }) => ({
     async findAll(ctx) {
+      let { sort, filters } = ctx.query;
+      if (!sort) {
+        sort = ["start", "end", "id"];
+      }
+      if (!filters) {
+        filters = {
+          publishedAt: {
+            $ne: null,
+          },
+        };
+      } else {
+        filters = {
+          ...filters,
+          publishedAt: {
+            $ne: null,
+          },
+        };
+      }
       const query = {
         fields: [
           "start",
@@ -22,11 +40,11 @@ module.exports = createCoreController(
         ],
         populate: {
           cards: {
-            fields: [`name`, 'name_en', 'name_ko'],
+            fields: [`name`, "name_en", "name_ko"],
             populate: ["thumbnail"],
             sort: {
               rarity: {
-                id: "desc"
+                id: "desc",
               },
               character: {
                 id: "asc",
@@ -34,8 +52,8 @@ module.exports = createCoreController(
             },
           },
         },
-        sort: ["start", "id"],
-        ...ctx.query
+        sort: sort,
+        filters: filters,
       };
       const entries = await strapi.entityService.findMany(
         "api::card-acquisition.card-acquisition",

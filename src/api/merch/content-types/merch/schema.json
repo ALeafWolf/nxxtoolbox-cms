@@ -88,6 +88,25 @@
       "type": "integer",
       "default": 0,
       "required": true
+    },
+    "art_source": {
+      "type": "enumeration",
+      "enum": [
+        "IN-GAME",
+        "OTHER"
+      ]
+    },
+    "art_style": {
+      "type": "enumeration",
+      "enum": [
+        "NORMAL",
+        "CHIBI",
+        "OTHER"
+      ]
+    },
+    "is_released": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
