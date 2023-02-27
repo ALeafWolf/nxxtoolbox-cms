@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "date_lists",
+  "info": {
+    "singularName": "date-list",
+    "pluralName": "date-lists",
+    "displayName": "Date List",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true,
+      "unique": true
+    }
+  }
+}

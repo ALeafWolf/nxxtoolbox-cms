@@ -79,7 +79,8 @@
         "INFLUENCE",
         "DEFENSE",
         "OTHER"
-      ]
+      ],
+      "required": true
     }
   }
 }

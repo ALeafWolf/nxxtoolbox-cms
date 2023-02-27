@@ -67,6 +67,9 @@ module.exports = createCoreController(
           character: {
             fields: ["id"],
           },
+          icon: {
+            fields: ["url"]
+          },
           skills: {
             fields: ["slug", "name", "name_en", "name_ko"],
             populate: {

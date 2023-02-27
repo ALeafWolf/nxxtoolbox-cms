@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_general_date_ranges",
+  "info": {
+    "displayName": "Date Range"
+  },
+  "options": {},
+  "attributes": {
+    "start": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::date-list.date-list"
+    },
+    "end": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::date-list.date-list"
+    }
+  }
+}

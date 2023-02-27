@@ -16,7 +16,7 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
     };
 
     const query = {
-      fields: ["name", "price", "sell_date_index"],
+      fields: ["name", "price"],
       populate: {
         series: {
           fields: ["name", "type"],
@@ -24,9 +24,19 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
         avatar: {
           fields: ["url"],
         },
+        sell_dates: {
+          populate: {
+            start: {
+              fields: ["date"],
+            },
+            end: {
+              fields: ["date"],
+            },
+          },
+        },
       },
       filters: filter,
-      sort: ctx.query.sort
+      sort: ctx.query.sort,
     };
     // Calling the default core action
     const entries = await strapi.entityService.findMany(
