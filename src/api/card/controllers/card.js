@@ -142,6 +142,11 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
     return card;
   },
   async findCardForPowerCalculator(ctx) {
+    const filters = ctx.query.filters ? ctx.query.filters : {};
+    const { sort } = ctx.query;
+    filters.publishedAt = {
+      $ne: null,
+    };
     const query = {
       fields: [
         "name",
@@ -168,7 +173,12 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
               fields: ["lv1", "lv10"],
             },
             skill_group: {
-              fields: ["description", "description_en", "description_ko", "related_statistic"],
+              fields: [
+                "description",
+                "description_en",
+                "description_ko",
+                "related_statistic",
+              ],
               populate: {
                 icon: {
                   fields: ["url"],
@@ -189,7 +199,8 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           },
         },
       },
-      ...ctx.query,
+      filters: filters,
+      sort: sort,
     };
     const entries = await strapi.entityService.findMany(
       "api::card.card",
