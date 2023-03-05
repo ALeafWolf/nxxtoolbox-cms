@@ -37,8 +37,7 @@
       "required": true
     },
     "sell_date_index": {
-      "type": "json",
-      "required": true
+      "type": "json"
     },
     "materials": {
       "type": "relation",
