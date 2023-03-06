@@ -53,12 +53,11 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
         "weibo",
         "tmall",
         "price",
-        "sell_date_index",
         "description",
       ],
       populate: {
         series: {
-          fields: ["name", "type", "sell_times"],
+          fields: ["name", "type"],
         },
         character: {
           fields: ["name"],
