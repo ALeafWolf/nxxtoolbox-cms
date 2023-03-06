@@ -109,6 +109,11 @@
       "repeatable": true,
       "component": "general.date-range",
       "required": true
+    },
+    "sell_date_ranges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::date-list.date-list"
     }
   }
 }
