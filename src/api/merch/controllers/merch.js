@@ -35,7 +35,8 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
           },
         },
         sell_date_ranges: {
-          fields: ['value', 'start', 'end']
+          fields: ['value', 'start', 'end'],
+          sort: 'start'
         }
       },
       filters: filter,
@@ -87,7 +88,8 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
           fields: ["value"],
         },
         sell_date_ranges: {
-          fields: ['value', 'start', 'end', 'url']
+          fields: ['value', 'start', 'end', 'url'],
+          sort: 'start'
         }
       },
       ...ctx.query,
