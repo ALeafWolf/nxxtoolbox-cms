@@ -34,7 +34,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::merch.merch",
-      "inversedBy": "sell_date_ranges"
+      "mappedBy": "sell_date_ranges"
     }
   }
 }
