@@ -26,6 +26,15 @@
     },
     "end": {
       "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "merches": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::merch.merch",
+      "inversedBy": "sell_date_ranges"
     }
   }
 }

@@ -112,8 +112,9 @@
     },
     "sell_date_ranges": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::date-list.date-list"
+      "relation": "manyToMany",
+      "target": "api::date-list.date-list",
+      "inversedBy": "merches"
     }
   }
 }
