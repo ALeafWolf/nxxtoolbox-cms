@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "update_logs",
+  "info": {
+    "singularName": "update-log",
+    "pluralName": "update-logs",
+    "displayName": "Update-Log",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "item": {
+      "displayName": "update-log-item",
+      "type": "component",
+      "repeatable": true,
+      "component": "general.update-log-item"
+    }
+  }
+}

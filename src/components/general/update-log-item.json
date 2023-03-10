@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_general_update_log_items",
+  "info": {
+    "displayName": "update-log-item"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
