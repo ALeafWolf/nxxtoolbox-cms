@@ -85,7 +85,6 @@
     },
     "price": {
       "type": "integer",
-      "default": 0,
       "required": true
     },
     "art_source": {
