@@ -19,7 +19,7 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
       fields: ["name", "price"],
       populate: {
         series: {
-          fields: ["name", "type"],
+          fields: ["name"],
         },
         avatar: {
           fields: ["url"],
@@ -61,7 +61,7 @@ module.exports = createCoreController("api::merch.merch", ({ strapi }) => ({
       ],
       populate: {
         series: {
-          fields: ["name", "type"],
+          fields: ["name"],
         },
         character: {
           fields: ["name"],
