@@ -17,24 +17,11 @@
       "required": true,
       "unique": true
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "PERMANENT",
-        "LIMITED-TIME",
-        "MIXED"
-      ],
-      "required": true
-    },
     "merches": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::merch.merch",
       "mappedBy": "series"
-    },
-    "sell_times": {
-      "type": "json",
-      "required": true
     }
   }
 }
