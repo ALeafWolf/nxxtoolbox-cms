@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "date": {
-      "type": "date"
-    },
     "value": {
       "type": "string",
       "required": true,

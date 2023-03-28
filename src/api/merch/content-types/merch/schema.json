@@ -34,7 +34,8 @@
     },
     "tmall": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "sell_date_index": {
       "type": "json"
