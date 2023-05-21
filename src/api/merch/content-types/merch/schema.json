@@ -97,7 +97,7 @@
     },
     "is_released": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "art_styles": {
       "type": "relation",
