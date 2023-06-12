@@ -12,7 +12,6 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  ckeditor: true,
   upload: {
     config: {
       provider: "aws-s3",
