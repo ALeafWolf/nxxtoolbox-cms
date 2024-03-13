@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_periods",
+  "info": {
+    "singularName": "card-period",
+    "pluralName": "card-periods",
+    "displayName": "Card Period"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ko": {
+      "type": "string"
+    }
+  }
+}

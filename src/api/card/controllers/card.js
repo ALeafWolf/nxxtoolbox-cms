@@ -44,6 +44,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
           fields: ["value"],
         },
         card_acquisitions: true,
+        card_period: {
+          fields: ["name", "name_en", "name_ko"],
+        },
       },
       sort: {
         id: "desc",
@@ -97,6 +100,9 @@ module.exports = createCoreController("api::card.card", ({ strapi }) => ({
             },
           },
           sort: ["start:desc", "end:desc"],
+        },
+        card_period: {
+          fields: ["name", "name_en", "name_ko"],
         },
         skills: {
           fields: ["name", "name_en", "name_ko", "slug", "variant"],
