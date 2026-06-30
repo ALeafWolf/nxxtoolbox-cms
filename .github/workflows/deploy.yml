@@ -1,0 +1,33 @@
+name: Deploy nxxtoolbox-be
+
+# Auto-deploy to the DigitalOcean droplet (165.227.45.213) on every push to master.
+# How it works: GitHub's runner SSHes into the server (port 22, left open by the TODO 4
+# firewall lockdown) and runs the same steps you'd run by hand.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:        # also lets you trigger a deploy manually from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true   # stop + fail the job on the first command that errors
+          script: |
+            # nvm is NOT auto-loaded in a non-interactive SSH session — source it so
+            # `node`/`npm`/`pm2` are on PATH (this activates the default Node 16).
+            export NVM_DIR="$HOME/.nvm"
+            . "$NVM_DIR/nvm.sh"
+
+            cd ~/projects/nxxtoolbox/backend
+            git fetch origin
+            git reset --hard origin/master   # match the repo exactly (ignores .env, build/, node_modules — all gitignored)
+            npm install                      # no committed lockfile, so install (not ci)
+            NODE_ENV=production npm run build
+            pm2 restart backend-nxxtoolbox-cms --update-env
