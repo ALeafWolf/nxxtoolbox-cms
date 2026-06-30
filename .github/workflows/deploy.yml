@@ -18,8 +18,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script_stop: true   # stop + fail the job on the first command that errors
           script: |
+            set -e   # fail the whole job if ANY command below errors (e.g. a broken build)
             # nvm is NOT auto-loaded in a non-interactive SSH session — source it so
             # `node`/`npm`/`pm2` are on PATH (this activates the default Node 16).
             export NVM_DIR="$HOME/.nvm"
