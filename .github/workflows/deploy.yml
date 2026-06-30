@@ -6,6 +6,9 @@ name: Deploy nxxtoolbox-be
 on:
   push:
     branches: [master]
+    paths-ignore:           # docs-only pushes don't need a redeploy
+      - '**.md'
+      - 'LICENSE'
   workflow_dispatch:        # also lets you trigger a deploy manually from the Actions tab
 
 jobs:
